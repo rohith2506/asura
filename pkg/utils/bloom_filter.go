@@ -10,10 +10,9 @@ we would like to add and also based on how much false positive rate we can accep
 @Author: Rohith Uppala
 */
 
-package main
+package bloomfilter
 
 import (
-    "fmt"
     "hash"
     "github.com/spaolacci/murmur3"
     "hash/fnv"
@@ -80,13 +79,4 @@ func (bf *BloomFilter) CheckForElementInBloomFilter(item []byte) (exists bool) {
         i += 1
     }
     return
-}
-
-func main() {
-    bf := New(1024)
-    bf.AddToBloomFilter([]byte("Hello"))
-    bf.AddToBloomFilter([]byte("World"))
-
-    fmt.Println(bf.CheckForElementInBloomFilter([]byte("Hello000")))
-    fmt.Println(bf.CheckForElementInBloomFilter([]byte("Worlddd")))
 }

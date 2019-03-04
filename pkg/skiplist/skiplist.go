@@ -149,6 +149,12 @@ func (list *SkipList) getPrevElementNodes(key float64) []*ElementNode {
     return prevs
 }
 
+
+func (list *SkipList) SetProbability(newProbability float64) {
+	list.probability = newProbability
+	list.probTable = probabilityTable(list.probability, list.maxLevel)
+}
+
 func (list *SkipList) randLevel() (level int) {
     r := float64(list.randSource.Int63()) / (1 << 63)
     level = 1
